@@ -46,10 +46,10 @@ void write_validated_option(FILE *out, const char *option, int enable) {
 
     /* Write output */
     if (enable) {
-        fprintf(out, "echo \"Enabling %s\"\n", option);
+        fprintf(out, "echo \"%s enabled\"\n", option);
         fprintf(out, "export %s=1\n", option);
     } else {
-        fprintf(out, "echo \"Disabling %s\"\n", option);
+        fprintf(out, "echo \"%s disabled\"\n", option);
         fprintf(out, "export %s=0\n", option);
     }
 }
