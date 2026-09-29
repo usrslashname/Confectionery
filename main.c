@@ -97,8 +97,8 @@ if (argc < 3 || argc > 4) {
     fprintf(out, "#!/bin/sh\n");
     fprintf(out, "echo \"Running configure script\"\n");
 
-    char line[256];
-    char option[128];
+    char line[255];
+    char option[127];
 
     /* ------------------------------- */
     /* Normal config mode              */
