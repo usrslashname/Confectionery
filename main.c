@@ -111,19 +111,15 @@ if (argc < 3 || argc > 4) {
             return 1;
         }
 
-        while (fgets(line, sizeof(line), config)) {
-            if (strstr(line, "is on")) {
-                sscanf(line, "%127s", option);
-                write_validated_option(out, option, 1);
-            }
-            if (strstr(line, "is off")) {
-                sscanf(line, "%127s", option);
-                write_validated_option(out, option, 0);
-            }
+        char name[128];
+
+        if (sscanf(line, " %127[^ \t\r\n] is on", name) == 1) {
+           write_validated_option(out, name, 1);
         }
 
-        fclose(config);
-    }
+        if (sscanf(line, " %127[^ \t\r\n] is off", name) == 1) {            
+           write_validated_option(out, name, 0);
+        }
 
     /* ------------------------------- */
     /* Preset mode                     */
