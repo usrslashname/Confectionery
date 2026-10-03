@@ -3,7 +3,7 @@
 Confectionery is the best build configuration system for extensively configurable applications. It is extremely lightweight. It is just one C file so you could, in theory, run gcc main.c and get Confectionery, but there are benefits that come with compiling it with the Makefile method such as a test suite, installation with make install, and being able to customize the Makefile if you want to.
 # Installing Confectionery
 ## Dependencies
-Confectionery depends on make. Yes, that's literally it. I hope your system has make already installed!
+Confectionery depends on make. Yes, that's literally it. If you don't have make installed, please explain how that is possible.
 ## Building
 Building Confectionery is an extremely easy two-step process.
 ### Step 1
@@ -17,9 +17,9 @@ Run make.
 make
 ```
 ### Step 3 (optional)
-Run make test. This runs the test suite.
+Run make check. This runs the test suite.
 ``` shell
-make test
+make check
 ```
 # Using Confectionery
 There are two ways to use Confectionery. You can either build your own configuration and run it or use a preset.
