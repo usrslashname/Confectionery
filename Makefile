@@ -16,7 +16,7 @@ $(TARGET): $(OBJS)
 install:
 	install -m 755 $(TARGET) /usr/local/bin/$(TARGET)
 
-test:
+check:
 	sh tests/test_basic.sh
 	sh tests/test_preset.sh
 	sh tests/test_validation.sh
