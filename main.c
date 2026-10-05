@@ -5,7 +5,6 @@
 #include <ctype.h>
 
 int validate_option(const char *option) {
-
     /* Empty option name */
     if (option[0] == '\0') {
         printf("What were you thinking?\n");
@@ -28,8 +27,7 @@ int validate_option(const char *option) {
         }
 
         /* Everything else is invalid */
-        printf("Option '%s' contains invalid character '%c'\n",
-               option, c);
+        printf("Option '%s' contains invalid character '%c'\n", option, c);
         return 0;
     }
 
@@ -37,7 +35,6 @@ int validate_option(const char *option) {
 }
 
 void write_validated_option(FILE *out, const char *option, int enable) {
-
     /* Validate */
     if (!validate_option(option)) {
         printf("Skipping invalid option '%s'\n", option);
@@ -55,8 +52,7 @@ void write_validated_option(FILE *out, const char *option, int enable) {
 }
 
 int main(int argc, char *argv[]) {
-
-if (argc < 3 || argc > 4) {
+    if (argc < 3 || argc > 4) {
         printf("Usage:\n");
         printf("  %s build CONFECTIONERYCONFIG\n", argv[0]);
         printf("  %s build PRESETS presetname\n", argv[0]);
@@ -113,13 +109,18 @@ if (argc < 3 || argc > 4) {
 
         char name[128];
 
-        if (sscanf(line, " %127[^ \t\r\n] is on", name) == 1) {
-           write_validated_option(out, name, 1);
-        }
+        while (fgets(line, sizeof(line), config)) {
+            if (sscanf(line, " %127[^ \t\r\n] is on", name) == 1) {
+               write_validated_option(out, name, 1);
+            }
 
-        if (sscanf(line, " %127[^ \t\r\n] is off", name) == 1) {            
-           write_validated_option(out, name, 0);
+            if (sscanf(line, " %127[^ \t\r\n] is off", name) == 1) {            
+               write_validated_option(out, name, 0);
+            }
         }
+        
+        fclose(config);
+    }
 
     /* ------------------------------- */
     /* Preset mode                     */
@@ -135,7 +136,6 @@ if (argc < 3 || argc > 4) {
         int in_correct_preset = 0;
 
         while (fgets(line, sizeof(line), p)) {
-
             /* Detect preset header */
             if (strstr(line, "[preset")) {
                 /* Example: [preset speedy] */
