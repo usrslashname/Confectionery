@@ -110,11 +110,11 @@ int main(int argc, char *argv[]) {
         char name[128];
 
         while (fgets(line, sizeof(line), config)) {
-            if (sscanf(line, " %127[^ \t\r\n] is on", name) == 1) {
+            if (sscanf(line, " %126[^ \t\r\n] is on", name) == 1) {
                write_validated_option(out, name, 1);
             }
 
-            if (sscanf(line, " %127[^ \t\r\n] is off", name) == 1) {            
+            if (sscanf(line, " %126[^ \t\r\n] is off", name) == 1) {            
                write_validated_option(out, name, 0);
             }
         }
