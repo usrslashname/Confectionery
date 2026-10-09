@@ -149,11 +149,11 @@ int main(int argc, char *argv[]) {
             /* Only parse inside the chosen preset */
             if (in_correct_preset) {
                 if (strstr(line, "is on")) {
-                    sscanf(line, "%127s", option);
+                    sscanf(line, "%126s", option);
                     write_validated_option(out, option, 1);
                 }
                 if (strstr(line, "is off")) {
-                    sscanf(line, "%127s", option);
+                    sscanf(line, "%126s", option);
                     write_validated_option(out, option, 0);
                 }
             }
